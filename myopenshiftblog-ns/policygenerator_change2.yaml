@@ -4,10 +4,14 @@ metadata:
   name: create-myopenshiftblog-namespace
 policyDefaults:
   namespace: policies
+  remediationAction: inform
   placement:
-    clusterSelectors:
-      name: "cluster1"
-  remediationAction: enforce
+    labelSelector:
+      matchExpressions:
+      - key: environment
+        operator: In
+        values:
+        - prod
 policies:
   - name: create-myopenshiftblog-namespace
     manifests:
