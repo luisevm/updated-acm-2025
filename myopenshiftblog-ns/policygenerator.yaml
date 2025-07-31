@@ -1,0 +1,14 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: create-myopenshiftblog-namespace
+policyDefaults:
+  namespace: policies
+  placement:
+    clusterSelectors:
+      name: "cluster1"
+  remediationAction: enforce
+policies:
+  - name: create-myopenshiftblog-namespace
+    manifests:
+      - path: myopenshiftblog-ns.yaml
